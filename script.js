@@ -2,7 +2,7 @@ const gameContainer = document.getElementById("game");
 const controlButts = document.querySelector('h2');
 const infoText = document.querySelector('h3');
 const scoreTracker = document.getElementById('curr-score');
-const hScore = document.getElementById('high-score');
+const lScore = document.getElementById('low-score');
 
 const COLORS = [
   "red",
@@ -70,9 +70,9 @@ let seshBest = JSON.parse(localStorage.getItem("localBest"));
 
 if(seshBest === null) {
   seshBest = 1000000;
-  hScore.innerText = "Hi-Score: 0";
+  lScore.innerText = "Lo-Score: 0";
 } else {
-  hScore.innerText = "Hi-Score: " + (seshBest).toString();
+  lScore.innerText = "Lo-Score: " + (seshBest).toString();
 }
 
 
@@ -94,7 +94,7 @@ controlButts.addEventListener('click', function(e) {
       infoText.innerText = ":)";
   } else if(e.target.classList == 'reset'){
     localStorage.clear();
-    hScore.innerText = "Hi-Score: 0";
+    lScore.innerText = "Lo-Score: 0";
   }
 });
 
@@ -142,7 +142,7 @@ function handleCardClick(event) {
           if(score < seshBest){
             infoText.innerText = "!!NEW RECORD!! Try Again?";
             seshBest = score;
-            hScore.innerText = "Hi-Score: " + (score).toString();
+            lScore.innerText = "Lo-Score: " + (score).toString();
             localStorage.setItem("localBest", JSON.stringify(score));
           }
         }
